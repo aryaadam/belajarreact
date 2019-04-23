@@ -32,7 +32,7 @@ class App extends Component {
         <Header />
         <Row>
           {this.state.makanan.map(item => (
-            <Col xs="12">
+            <Col xs="4">
               <Counter gambar={item.gambar} nama={item.nama} />
             </Col>
           ))}

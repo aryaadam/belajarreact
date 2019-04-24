@@ -7,7 +7,7 @@ export default class home extends Component {
     return (
       <div>
         <Header name="Home" />
-        <Jumbotron img="" judul="Pesan Makanan Sekarang" />
+        <Jumbotron img="" judul="Pesan Makanan Sekarang Di Tempat" />
       </div>
     );
   }

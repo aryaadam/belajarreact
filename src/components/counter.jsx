@@ -23,27 +23,26 @@ import {
 } from 'reactstrap';
 export default class Counter extends Component {
   state = {
-    nomor: 1,
-    harga: 10000,
-    biaya: 10000
+    qty: 0
   };
-  Tam = () => {
-    this.setState(({ nomor, harga, biaya }) => ({
-      nomor: nomor + 1,
-      harga: harga + biaya
-    }));
-  };
-  Kur = () => {
-    var nomor = this.state.nomor;
 
-    if (nomor > 0) {
-      this.setState(({ nomor, harga, biaya }) => ({
-        nomor: nomor - 1,
-        harga: harga - biaya
-      }));
+  tambah = () => {
+    this.setState({
+      qty: this.state.qty + 1
+    });
+    this.props.tambahTotalHarga(this.props.harga);
+  };
+  kurang = () => {
+    if (this.state.qty === 0) {
+      return;
     }
+    this.setState({
+      qty: this.state.qty - 1
+    });
+    this.props.kurangTotalHarga(this.props.harga);
   };
   render() {
+    console.log(this.props);
     return (
       <div>
         <Card style={{ width: '100%', height: '50%', marginRight: '10px' }}>
@@ -55,19 +54,31 @@ export default class Counter extends Component {
           />
           <CardBody>
             <CardTitle>{this.props.nama}</CardTitle>
+            <p>Rp. {this.props.harga}</p>
             <p>Pesan Berapa</p>
-            <p>Harga:{this.state.harga}</p>
+            <h1>{this.state.nomor}</h1>
             <div>
               <Navbar
                 style={{ backgroundColor: 'lightblue' }}
                 color="faded"
                 light
               >
-                <Button onClick={this.Kur} className="btn btn-danger m-2">
+                <Button
+                  onClick={() => {
+                    this.kurang(this.props.indexMakanan, this.props.nomor);
+                  }}
+                  className="btn btn-danger m-2"
+                >
                   -
                 </Button>
-                <h1>{this.state.nomor}</h1>
-                <Button onClick={this.Tam} className="btn btn-success m-2">
+
+                <h1 align="justify">{this.state.qty} </h1>
+                <Button
+                  onClick={() => {
+                    this.tambah(this.props.indexMakanan, this.props.nomor);
+                  }}
+                  className="btn btn-success m-2"
+                >
                   +
                 </Button>
               </Navbar>

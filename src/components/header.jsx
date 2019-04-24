@@ -6,6 +6,7 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
+  Spinner,
   NavLink
 } from 'reactstrap';
 export default class Header extends Component {
@@ -29,16 +30,9 @@ export default class Header extends Component {
       <div>
         <Navbar style={{ backgroundColor: 'cyan' }} color="faded" light>
           <NavbarBrand href="/" className="mr-auto">
+            <Spinner type="grow" color="secondary" />
             GO-Food
           </NavbarBrand>
-          <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
-          <Collapse isOpen={!this.state.collapsed} navbar>
-            <Nav navbar>
-              <NavItem>
-                <NavLink href="components/lanjut.jsx">Daftar Makanan</NavLink>
-              </NavItem>
-            </Nav>
-          </Collapse>
         </Navbar>
       </div>
     );
